@@ -1,14 +1,3 @@
-<?php
-
-//HACK!!
-$manufacturers = array();
-$countries = array();
-$year = "";
-$manufacturer = "";
-$color = "";
-$results = array();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,32 +16,35 @@ $results = array();
 <body>
 
     <h1>Automobile statistics tool</h1>
-    <form method="GET" action="index.php">
+    <form method="GET">
         <fieldset>
             <legend>Filtering options</legend>
 
             <?php if (isset($error)) { ?>
-                <div class="error">
-                    <?php echo htmlspecialchars($error); ?>
-                </div>
+            <div class="error">
+                <?php echo htmlspecialchars($error); ?>
+            </div>
             <?php } ?>
 
             <select name="manufacturer" id="manufacturer">
                 <option value="">Pick a brand</option>
-                <?php foreach ($manufacturers as $id => $title) { ?>
-                    <option value="<?php echo $id; ?>"><?php echo htmlspecialchars($title); ?></option>
-                <?php } ?>
+                @foreach ($manufacturers as $manufacturer)
+                    <option value="{{ $manufacturer->id }}"
+                        {{ $selectedmanufacturer == $manufacturer->id ? 'selected' : '' }}>{{ $manufacturer->title }}
+                    </option>
+                @endforeach
             </select>
 
             <select name="country" id="country">
                 <option value="">Pick a country</option>
-                <?php foreach ($countries as $id => $title) { ?>
-                    <option value="<?php echo $id; ?>"><?php echo htmlspecialchars($title); ?></option>
-                <?php } ?>
+                @foreach ($countries as $country)
+                    <option value="{{ $country->id }}" {{ $selectedcountry == $country->id ? 'selected' : '' }}>
+                        {{ $country->title }}</option>
+                @endforeach
             </select>
 
             <label for="year">Production year</label>
-            <input type="number" name="year" min="2010" max="2020" />
+            <input type="number" name="year" min="2010" max="2020" value="{{ $selectedyear }}" />
 
             <button type="submit">Apply filters </button>
         </fieldset>
@@ -62,17 +54,25 @@ $results = array();
     <section id="main">
         <?php if (sizeof($results) > 0) {
         ?>
-            <table>
+        <table>
+            <tr>
+                <th>Brand/Manufacturer</th>
+                <th>Model</th>
+                <th>Color</th>
+                <th>Count</th>
+            </tr>
+
+            @foreach ($results as $result)
                 <tr>
-                    <th>Brand/Manufacturer</th>
-                    <th>Model</th>
-                    <th>Color</th>
-                    <th>Count</th>
+                    <td>{{ $result->manufacturer }}</td>
+                    <td>{{ $result->model }}</td>
+                    <td>{{ $result->color }}</td>
+                    <td>{{ $result->count }}</td>
                 </tr>
+            @endforeach
 
-                <!-- TODO: Output a table row for each result line -->
 
-            </table>
+        </table>
         <?php
         }
         ?>

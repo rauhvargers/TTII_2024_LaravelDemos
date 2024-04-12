@@ -3,7 +3,6 @@
 
 Commands to be executed
 
-
     mkdir lab3lara
     cd lab3lara
 
@@ -18,3 +17,8 @@ Commands to be executed
     ddev mysql -uroot -proot < .webtech-lu/001_create_users_perms.sql
 
     ddev php artisan migrate
+    ddev artisan make:controller AutomobileController
+
+
+A good fix for "php executable path not set" problem by some development tools
+https://stackoverflow.com/a/73630729/239599
