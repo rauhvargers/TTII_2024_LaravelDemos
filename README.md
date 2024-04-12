@@ -12,3 +12,9 @@ Commands to be executed
     ddev composer update
     ddev php artisan key:generate
     ddev get ddev/ddev-phpmyadmin
+
+    
+    ddev import-db --database=mobile --file=.webtech-lu/000_db_dump.sql
+    ddev mysql -uroot -proot < .webtech-lu/001_create_users_perms.sql
+
+    ddev php artisan migrate
