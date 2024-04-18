@@ -22,14 +22,14 @@ class AutomobileController extends Controller
             $results = DB::select(
                 "select
             manufacturers.title as manufacturer,
-            models.title as model,
+            carmodels.title as model,
             colors.title as color,
             count(*) as count
            from
             manufacturers
-            inner join models on manufacturer_id = manufacturers.id
-            inner join cars on cars.model_id = models.id
-            inner join countries on cars.source_country_id = countries.id
+            inner join carmodels on manufacturer_id = manufacturers.id
+            inner join cars on cars.carmodel_id = carmodels.id
+            inner join countries on cars.country_id = countries.id
             inner join colors on cars.color_id = colors.id
            where
             manufacturer_id = :manufacturer 
@@ -37,7 +37,7 @@ class AutomobileController extends Controller
             and cars.registration_year = :year
            group by
             manufacturers.title,
-            models.title,
+            carmodels.title,
             colors.title
            order by
             manufacturer,
