@@ -1,13 +1,11 @@
 --
 -- Database: `mobile`
 --
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `cars`
 --
-
 CREATE TABLE `cars` (
   `id` int(11) NOT NULL,
   `carmodel_id` int(11) NOT NULL,
@@ -168,7 +166,7 @@ ALTER TABLE `carmodels`
 --
 ALTER TABLE `cars`
   ADD CONSTRAINT `car_color_id` FOREIGN KEY (`color_id`) REFERENCES `colors` (`id`),
-  ADD CONSTRAINT `car_country_id` FOREIGN KEY (`source_country_id`) REFERENCES `countries` (`id`),
+  ADD CONSTRAINT `car_country_id` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
   ADD CONSTRAINT `car_fuel_id` FOREIGN KEY (`fuel_id`) REFERENCES `fuels` (`id`),
   ADD CONSTRAINT `car_carmodel_id` FOREIGN KEY (`carmodel_id`) REFERENCES `carmodels` (`id`);
 
@@ -177,32 +175,3 @@ ALTER TABLE `cars`
 --
 ALTER TABLE `carmodels`
   ADD CONSTRAINT `carmodel_manufacturer_id` FOREIGN KEY (`manufacturer_id`) REFERENCES `manufacturers` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: db:3306
--- Generation Time: Mar 03, 2024 at 10:11 PM
--- Server version: 10.4.32-MariaDB-1:10.4.32+maria~ubu2004-log
--- PHP Version: 8.2.14
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `mobile`
---
-
---
--- Dumping data for table `colors`
