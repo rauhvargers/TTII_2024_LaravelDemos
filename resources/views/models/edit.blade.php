@@ -28,6 +28,7 @@
         </div>
 
         <button type="submit">Update</button>
+        <a href="{{ route('models.show', $carmodel->id) }}">Cancel</a>
     </form>
 
 
