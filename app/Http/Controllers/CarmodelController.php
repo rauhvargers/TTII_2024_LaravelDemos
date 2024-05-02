@@ -24,6 +24,10 @@ class CarmodelController extends Controller
 
     function update(Request $request, Carmodel $carmodel)
     {
+        $validated_input = $request->validate([
+            'title' => 'required|string|min:3|max:255',
+            'manufacturer_id' => 'required'
+        ]);
         $carmodel->title = $request->input('title');
         $carmodel->manufacturer_id = $request->input('manufacturer_id');
         $carmodel->update();

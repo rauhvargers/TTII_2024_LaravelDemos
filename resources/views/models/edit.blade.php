@@ -25,7 +25,10 @@
 
         <div>
             <label for="title">Title:</label>
-            <input type="text" name="title" id="title" value="{{ $carmodel->title }}" maxlength="100">
+            <input type="text" name="title" id="title" value="{{ old('title', $carmodel->title) }}" maxlength="100">
+            @error('title')
+                <span style="color:red">{{ $message }}</span>
+            @enderror
         </div>
 
         <button type="submit">Update</button>
