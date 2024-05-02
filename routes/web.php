@@ -9,4 +9,4 @@ Route::get('/', function () {
 });
 
 Route::get('/automobiles', [AutomobileController::class, 'index']);
-Route::get('/models/{id}', [CarmodelController::class, 'show']);
+Route::get('/models/{carmodel}', [CarmodelController::class, 'show']);

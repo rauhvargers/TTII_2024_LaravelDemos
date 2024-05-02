@@ -9,10 +9,8 @@ class CarmodelController extends Controller
 {
     //
     
-    function show($id)
+    function show(Request $request, Carmodel $carmodel)
     {
-        $carModel = Carmodel::with('cars')->find($id);
-
-        return view('models.show', compact('carModel'));
+        return view('models.show', compact('carmodel'));
     }
 }
