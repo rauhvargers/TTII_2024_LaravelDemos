@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carmodel;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
+use Illuminate\Support\Facades\Session;
 
 class CarmodelController extends Controller
 {
@@ -25,8 +26,10 @@ class CarmodelController extends Controller
     {
         $carmodel->title = $request->input('title');
         $carmodel->manufacturer_id = $request->input('manufacturer_id');
-
         $carmodel->update();
+        
+        Session::flash('message', 'Successfully updated car model ' . $carmodel->title);
+        
         return redirect()->route('models.show', $carmodel);
     }
 }

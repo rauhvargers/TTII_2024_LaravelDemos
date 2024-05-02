@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+    <x-flash-message />
     <h1>Automobile statistics tool</h1>
     <form method="GET">
         <fieldset>

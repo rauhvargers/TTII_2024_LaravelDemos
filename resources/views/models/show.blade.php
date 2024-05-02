@@ -32,6 +32,7 @@
 </head>
 
 <body>
+    <x-flash-message />
     <!-- Breadcrumb navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

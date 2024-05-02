@@ -6,6 +6,7 @@
     <title>Edit Car Model</title>
 </head>
 <body>
+    <x-flash-message />
     <h1>Edit Car Model</h1>
 
     <form action="{{ route('models.update', $carmodel->id) }}" method="POST">
