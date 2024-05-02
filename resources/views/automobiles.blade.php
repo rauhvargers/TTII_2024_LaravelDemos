@@ -65,7 +65,7 @@
             @foreach ($results as $result)
                 <tr>
                     <td>{{ $result->manufacturer }}</td>
-                    <td>{{ $result->model }}</td>
+                    <td><a href='{{ route("models.show", $result->model_id) }}'>{{ $result->model }}</a></td>
                     <td>{{ $result->color }}</td>
                     <td>{{ $result->count }}</td>
                 </tr>

@@ -23,6 +23,7 @@ class AutomobileController extends Controller
                 "select
             manufacturers.title as manufacturer,
             carmodels.title as model,
+            carmodels.id as model_id,
             colors.title as color,
             count(*) as count
            from
@@ -38,6 +39,7 @@ class AutomobileController extends Controller
            group by
             manufacturers.title,
             carmodels.title,
+            carmodels.id,
             colors.title
            order by
             manufacturer,
