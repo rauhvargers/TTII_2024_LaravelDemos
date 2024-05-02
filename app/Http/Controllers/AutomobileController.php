@@ -3,22 +3,43 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AutomobileController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
         //classifier data from database
         $manufacturers = DB::select('select id, title from manufacturers order by title asc');
         $countries = DB::select('select id, title from countries order by title asc');
 
-        $selectedyear =  intval(request()->input('year'));
-        $selectedmanufacturer = intval(request()->input('manufacturer'));
-        $selectedcountry = intval(request()->input('country'));
+        if ($request->has('year') || $request->has('manufacturer') || $request->has('country')) {
+            $selectedyear =  intval(request()->input('year'));
+            $selectedmanufacturer = intval(request()->input('manufacturer'));
+            $selectedcountry = intval(request()->input('country'));
+            $filters = [
+                'year' => $selectedyear,
+                'manufacturer' => $selectedmanufacturer,
+                'country' => $selectedcountry
+            ];
+        } else if ($request->session()->has('lastUsedFilters')) {
+            $filters = $request->session()->get('lastUsedFilters');
+            $selectedyear = $filters['year'];
+            $selectedmanufacturer = $filters['manufacturer'];
+            $selectedcountry = $filters['country'];
+        } else {
+            $selectedyear = 0;
+            $selectedmanufacturer = 0;
+            $selectedcountry = 0;
+        }
+
 
 
         $results = array();
         if ($selectedyear > 0 && $selectedmanufacturer > 0 && $selectedcountry > 0) {
+            
+
             $results = DB::select(
                 "select
             manufacturers.title as manufacturer,
@@ -46,14 +67,12 @@ class AutomobileController extends Controller
             model,
             color,
             count desc",
-                [
-                    "manufacturer" => $selectedmanufacturer,
-                    "country" => $selectedcountry,
-                    "year" => $selectedyear
-                ]
+                $filters
             );
         }
 
+
+        $request->session()->put('lastUsedFilters', $filters);
 
         return view(
             'automobiles',
