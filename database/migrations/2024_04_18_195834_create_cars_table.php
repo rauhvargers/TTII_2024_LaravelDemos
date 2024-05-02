@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cars', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('carmodel_id')->constrained()->onDelete('cascade');
-            $table->foreignId('color_id')->constrained()->onDelete('cascade');
-            $table->foreignId('fuel_id')->constrained()->onDelete('cascade');
-            $table->integer('registration_year');
-            $table->foreignId('country_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('cars')) {
+            Schema::create('cars', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('carmodel_id')->constrained()->onDelete('cascade');
+                $table->foreignId('color_id')->constrained()->onDelete('cascade');
+                $table->foreignId('fuel_id')->constrained()->onDelete('cascade');
+                $table->integer('registration_year');
+                $table->foreignId('country_id')->constrained()->onDelete('cascade');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

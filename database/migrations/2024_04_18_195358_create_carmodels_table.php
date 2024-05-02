@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carmodels', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
-            $table->string('title', 100);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('carmodels')) {
+            Schema::create('carmodels', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
+                $table->string('title', 100);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
