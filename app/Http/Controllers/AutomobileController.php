@@ -13,7 +13,8 @@ class AutomobileController extends Controller
         //classifier data from database
         $manufacturers = DB::select('select id, title from manufacturers order by title asc');
         $countries = DB::select('select id, title from countries order by title asc');
-
+        $filters = [];
+        
         if ($request->has('year') || $request->has('manufacturer') || $request->has('country')) {
             $selectedyear =  intval(request()->input('year'));
             $selectedmanufacturer = intval(request()->input('manufacturer'));

@@ -36,7 +36,6 @@
     <!-- Breadcrumb navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('automobiles.index') }}">Models</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $carmodel->title }}</li>
         </ol>
