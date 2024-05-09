@@ -6,6 +6,7 @@ use App\Models\Carmodel;
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CarmodelController extends Controller
 {

@@ -45,7 +45,10 @@
 
     <h2><?php echo $carmodel->title; ?></h2>
     <p>Manufacturer: <?php echo $carmodel->manufacturer->title; ?></p>
-    <a href="<?php echo route('models.edit', $carmodel->id); ?>">Edit</a>
+    @auth
+    <a href="<?php echo route('models.edit', $carmodel->id); ?>">Edit</a>    
+    @endauth
+    
 
 
     @foreach ($carmodel->cars()->with('color')->getEager() as $car)
