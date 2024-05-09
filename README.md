@@ -33,4 +33,9 @@ php artisan make:model Manufacturer --migration
 php artisan make:model Car --migration 
 ```
 
-# To run it on your computer
+
+## Other notes
+
+After installing Laravel Breeze in DDEV configuration, the vite web development web server is not reachable.
+Follow [this instruction](https://mtillmann.blog/posts/laravel-10-on-ddev-with-vite-and-breeze.html) on 
+how to create another container for vite webserver and run it through HTTPS.
