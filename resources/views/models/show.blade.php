@@ -47,12 +47,18 @@
     <p>Manufacturer: <?php echo $carmodel->manufacturer->title; ?></p>
 
     @can('edit-carmodels')
-        <p style='color:green'>You are allowed to change the model data!</p>
+        <p style='color:green'>The gate function allows you to change the model data!</p>
     @endcan
+    
+    @can('update', $carmodel)
+        <p style='color:green'>The policy allows you modify the model data!</p>
+    @endcan
+
     @auth
         <a href="<?php echo route('models.edit', $carmodel->id); ?>">Edit</a>    
     @endauth
     
+   
 
 
 

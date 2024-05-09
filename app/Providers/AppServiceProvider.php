@@ -2,10 +2,18 @@
 
 namespace App\Providers;
 
+use App\Models\Carmodel;
+use App\Policies\CarmodelPolicy;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate; // Import the Gate class
 class AppServiceProvider extends ServiceProvider
 {
+
+    protected $policies = [
+        Carmodel::class => CarmodelPolicy::class,
+        ];
+
+        
     /**
      * Register any application services.
      */
