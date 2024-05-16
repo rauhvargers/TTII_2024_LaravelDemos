@@ -77,6 +77,7 @@
         }
         ?>
     </section>
+    <x-page-footer />
 
 </body>
 
