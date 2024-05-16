@@ -77,7 +77,9 @@
         }
         ?>
     </section>
-    <x-page-footer />
+    <x-page-footer>
+        Whatever exta you want to add.
+    </x-page-footer>
 
 </body>
 
