@@ -19,11 +19,7 @@ class AutomobileController extends Controller
             $selectedyear =  intval(request()->input('year'));
             $selectedmanufacturer = intval(request()->input('manufacturer'));
             $selectedcountry = intval(request()->input('country'));
-            $filters = [
-                'year' => $selectedyear,
-                'manufacturer' => $selectedmanufacturer,
-                'country' => $selectedcountry
-            ];
+           
         } else if ($request->session()->has('lastUsedFilters')) {
             $filters = $request->session()->get('lastUsedFilters');
             $selectedyear = $filters['year'];
@@ -34,7 +30,11 @@ class AutomobileController extends Controller
             $selectedmanufacturer = 0;
             $selectedcountry = 0;
         }
-
+        $filters = [
+            'year' => $selectedyear,
+            'manufacturer' => $selectedmanufacturer,
+            'country' => $selectedcountry
+        ];
 
 
         $results = array();
