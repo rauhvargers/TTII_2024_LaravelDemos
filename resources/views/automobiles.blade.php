@@ -79,6 +79,8 @@
     </section>
     <x-page-footer>
         Whatever exta you want to add.
+        <x-slot name="author">Krišs Rauhvargers</x-slot>
+        <x-slot name="year">2019</x-slot>
     </x-page-footer>
 
 </body>
